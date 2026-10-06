@@ -199,10 +199,18 @@ python -c "from soma_retargeter.robotics.robot_registry import list_available_ta
 Expected result:
 
 ```text
-agibot-a3t3, agibot_x2ultra, booster_t1, unitree_g1, unitree_h2
+agibot-a3t3, agibot_x2ultra, asimov_1, booster_t1, unitree_g1, unitree_h2
 ```
 
 The order is alphabetical. If import fails, make sure you are still in the repository root, then rerun `uv sync` for uv or `python -m pip install -e .` in the activated conda environment. If one or more robot names are missing, rerun `git lfs pull`, then retry the verification.
+
+`asimov_1` is listed even though its URDF and meshes are not part of the repository. To use it, download them once from the pinned upstream source:
+
+```bash
+uv run python app/tools/fetch_asimov_assets.py
+```
+
+Expected result: the command ends with `Done:` and the number of files downloaded. Rerunning it verifies the existing files and skips them. Until the files are downloaded, selecting `asimov_1` fails with an error that names this command.
 
 ## Optional: verify that a window can open
 

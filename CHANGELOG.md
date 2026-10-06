@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+
+- Robot target for the Asimov 1 humanoid (`asimov_1`) from Menlo Research: manifest and SOMA retargeting configs. Its URDF and meshes are not redistributed; `app/tools/fetch_asimov_assets.py` downloads them unmodified from a pinned upstream commit and verifies their checksums.
+- Optional manifest field `desc.fetch_hint`, shown when a robot's description file is missing.
+
 ## [0.2.1] - 2026-10-01
 
 ### Fixed

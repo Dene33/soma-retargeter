@@ -114,6 +114,7 @@ All local paths in a manifest are relative to the directory containing that mani
 - `desc.xml_path` — path to an MJCF XML. Use either this or `urdf_path`.
 - `desc.urdf_offset` — optional precomputed Z lift for a URDF. Without it, the loader builds the URDF once, measures the lowest collision geometry, and rebuilds it at ground level.
 - `desc.newton_asset` — optional Newton asset identifier. When present, description paths are resolved below Newton's downloaded asset directory rather than the manifest directory.
+- `desc.fetch_hint` — optional text explaining how to obtain a description file that is not distributed with the target, such as the command that downloads it. It is appended to the error raised when the description file is missing.
 - `retarget_configs` — source-name-to-retargeter-path map. The current public source key is `soma`.
 
 If neither `urdf_path` nor `xml_path` is present, model loading fails. If `retarget_configs.soma` is absent, the model can still appear as registered, but SOMA retargeting fails because no source-to-target configuration can be resolved.

@@ -113,7 +113,9 @@ def get_target_asset_path(target: str) -> dict:
     """Return asset-path dict (``urdf_path`` or ``xml_path`` key) for *target*.
 
     The manifest ``desc`` may also contain ``urdf_offset`` (a precomputed
-    ground offset) which is forwarded to the caller.
+    ground offset) which is forwarded to the caller, and ``fetch_hint`` (how to
+    obtain a description that is not distributed with the package), which is
+    appended to the error raised when the description file is missing.
     """
     entry = _robot_registry.get(target)
     desc = entry.desc
@@ -131,6 +133,11 @@ def get_target_asset_path(target: str) -> dict:
             result["urdf_path"] = os.path.join(entry.manifest_dir, desc["urdf_path"])
     if not result:
         raise ValueError(f"Manifest for '{target}' must specify 'urdf_path' or 'xml_path' in 'desc'")
+    desc_path = result.get("xml_path") or result.get("urdf_path")
+    if not os.path.isfile(desc_path):
+        hint = desc.get("fetch_hint")
+        raise FileNotFoundError(
+            f"Robot description for '{target}' not found: {desc_path}" + (f". {hint}" if hint else ""))
     if "urdf_offset" in desc:
         result["urdf_offset"] = desc["urdf_offset"]
     return result

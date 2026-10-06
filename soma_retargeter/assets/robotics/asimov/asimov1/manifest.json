@@ -1,0 +1,10 @@
+{
+    "name": "asimov_1",
+    "desc": {
+        "urdf_path": "desc/urdf/asimov_1.urdf",
+        "fetch_hint": "Download it with: uv run python app/tools/fetch_asimov_assets.py"
+    },
+    "retarget_configs": {
+        "soma": "configs/soma_to_asimov_1_retargeter_config.json"
+    }
+}
