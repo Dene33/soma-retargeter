@@ -140,9 +140,21 @@ class Viewer:
         if self.retarget_target == selected_target:
             return
 
+        try:
+            robot_builder = pipeline_utils.create_robot_builder(selected_target)
+        except Exception as error:
+            if self.retarget_target not in self.retarget_target_options:
+                raise
+            # Keep the previously loaded robot and report why the selection failed.
+            message = f"[ERROR]: {error}"
+            print(message)
+            self._error_message = message
+            self.retarget_target_idx = self.retarget_target_options.index(self.retarget_target)
+            return
+
         camera_state = self._capture_camera_state()
         self.retarget_target = selected_target
-        self.robot_builder = pipeline_utils.create_robot_builder(self.retarget_target)
+        self.robot_builder = robot_builder
         self.actuated_joint_names = newton_utils.get_filtered_joint_names(
             self.robot_builder, [newton.JointType.REVOLUTE])
 

@@ -26,10 +26,10 @@ Retargeter does the following:
 
 The repository includes:
 
-- 10 example BVH motions and matching CSV results for all five bundled robots;
+- 10 example BVH motions and matching CSV results for the bundled robots (all except `asimov_1`);
 - an interactive viewer for loading, retargeting, inspecting, and saving one motion;
 - a headless mode for converting folders of motions;
-- configuration and model assets for `unitree_g1`, `unitree_h2`, `booster_t1`, `agibot_x2ultra`, and `agibot-a3t3`;
+- configuration and model assets for `unitree_g1`, `unitree_h2`, `booster_t1`, `agibot_x2ultra`, and `agibot-a3t3`, plus configuration for `asimov_1`, whose model files are downloaded separately;
 - tools for configuring another robot and tuning and optimizing inverse-kinematics weights.
 - 15 BVH motions for inverse-kinematics weights optimization
 
@@ -67,7 +67,7 @@ For the first run, use `assets/motions/bvh/Neutral_walk_forward_002__A057.bvh`. 
 
 The `.csv` output stores the root pose and actuated robot joint values over time. Joint columns correspond to the selected robot model. Two target robots can have different columns, even when they were generated from the same BVH.
 
-The bundled CSV files under `assets/motions/csv/` are organized by robot and provide reference results for all five bundled robots. Select the folder matching your target robot. Your result should have the same general motion, but exact values can change when configuration or dependency versions change.
+The bundled CSV files under `assets/motions/csv/` are organized by robot and provide reference results for every bundled robot except `asimov_1`. Select the folder matching your target robot. Your result should have the same general motion, but exact values can change when configuration or dependency versions change.
 
 ## Bundled robot targets
 
@@ -77,7 +77,8 @@ Use these exact target names when using bundled robots:
 - `unitree_h2`;
 - `booster_t1`;
 - `agibot_x2ultra`;
-- `agibot-a3t3`.
+- `agibot-a3t3`;
+- `asimov_1` — its URDF and meshes are not included in this repository. Download them once with `uv run python app/tools/fetch_asimov_assets.py` before selecting it.
 
 The interactive viewer lists discovered targets in its robot selector. Headless conversion reads the target from the `retarget_target` field in the converter configuration.
 
@@ -122,6 +123,8 @@ The repository directly includes third-party robot-description and mesh assets:
 The applicable robot-asset license texts and path scopes are also included in the top-level [LICENSE](LICENSE). License copies for Python dependencies are available in [`licenses/`](licenses/). Python dependencies are installed from package registries rather than copied into this repository.
 
 Some manifest-driven workflows can ask NVIDIA Newton to retrieve a separately hosted robot asset at runtime. Those assets remain subject to their upstream terms and are not bundled by SOMA Retargeter unless they are present in this repository.
+
+The Asimov 1 description used by `asimov_1` is not included in this repository. `app/tools/fetch_asimov_assets.py` downloads it, unmodified, at the pinned upstream [commit](https://github.com/menloresearch/asimov-1/tree/f71f3fe87ddfa6b7aac2a5cddeaad5dbbc19cca7/sim-model) into the target's `desc/` directory. It downloads from the [Dene33/asimov-1](https://github.com/Dene33/asimov-1) fork, which preserves that commit, and falls back to upstream. Upstream's license files are downloaded next to the description (hardware under CERN-OHL-S-2.0, software under GPL-2.0). The downloaded files remain subject to those terms; that directory is ignored by git and excluded from package builds.
 
 ## Where to go next
 

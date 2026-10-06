@@ -31,6 +31,10 @@ exclude = ["app*", "assets*"]
 [tool.setuptools.package-data]
 soma_retargeter = ["assets/**/*.json", "assets/**/*.bvh", "assets/**/*.usd", "assets/robotics/**/*"]
 
+[tool.setuptools.exclude-package-data]
+# Downloaded locally by app/tools/fetch_asimov_assets.py; not redistributed.
+soma_retargeter = ["assets/robotics/asimov/asimov1/desc/**"]
+
 [tool.setuptools.dynamic]
 version = { attr = "soma_retargeter.__version__" }
 

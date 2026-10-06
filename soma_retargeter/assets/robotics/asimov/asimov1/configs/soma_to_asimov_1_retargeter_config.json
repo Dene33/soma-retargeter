@@ -1,0 +1,151 @@
+{
+    "num_initialization_frames": 10,
+    "num_stabilization_frames": 5,
+    "ik_iterations": 24,
+    "joint_limit_weight": 10.0,
+    "smooth_joint_filter_weight": 5.5,
+    "enable_post_processing": true,
+    "enable_contact_processing": true,
+    "human_robot_scaler_config": "configs/soma_to_asimov_1_scaler_config.json",
+    "post_processing": {
+        "robot_config": "configs/asimov_1_post_processing_config.json"
+    },
+    "smooth_joint_filter_objective_body_masks": {
+        "left_shoulder_pitch_link": [
+            1.0,
+            1.02,
+            1.02
+        ],
+        "left_shoulder_roll_link": [
+            0.75,
+            0.8,
+            0.0
+        ],
+        "left_shoulder_yaw_link": [
+            0.3,
+            1.02,
+            1.02
+        ],
+        "left_elbow_link": [
+            1.0,
+            0.0,
+            0.8
+        ],
+        "left_wrist_yaw_link": [
+            1.0,
+            3.1,
+            3.1
+        ],
+        "right_shoulder_pitch_link": [
+            1.0,
+            1.02,
+            1.02
+        ],
+        "right_shoulder_roll_link": [
+            0.75,
+            0.0,
+            0.8
+        ],
+        "right_shoulder_yaw_link": [
+            0.3,
+            1.02,
+            1.02
+        ],
+        "right_elbow_link": [
+            1.0,
+            0.8,
+            0.0
+        ],
+        "right_wrist_yaw_link": [
+            1.0,
+            3.1,
+            3.1
+        ]
+    },
+    "ik_match_table": {
+        "Hips": {
+            "t_body": "pelvis_link",
+            "r_body": "pelvis_link",
+            "t_weight": 50.0,
+            "r_weight": 10.0
+        },
+        "Chest": {
+            "t_body": "waist_yaw_link",
+            "r_body": "waist_yaw_link",
+            "t_weight": 1.0,
+            "r_weight": 5.0
+        },
+        "LeftArm": {
+            "t_body": "left_shoulder_roll_link",
+            "r_body": "left_shoulder_roll_link",
+            "t_weight": 1.5,
+            "r_weight": 0.65
+        },
+        "LeftForeArm": {
+            "t_body": "left_elbow_link",
+            "r_body": "left_elbow_link",
+            "t_weight": 1.0,
+            "r_weight": 1.0
+        },
+        "LeftHand": {
+            "t_body": "left_wrist_yaw_link",
+            "r_body": "left_wrist_yaw_link",
+            "t_weight": 4.0,
+            "r_weight": 0.0
+        },
+        "RightArm": {
+            "t_body": "right_shoulder_roll_link",
+            "r_body": "right_shoulder_roll_link",
+            "t_weight": 1.5,
+            "r_weight": 0.65
+        },
+        "RightForeArm": {
+            "t_body": "right_elbow_link",
+            "r_body": "right_elbow_link",
+            "t_weight": 1.0,
+            "r_weight": 1.0
+        },
+        "RightHand": {
+            "t_body": "right_wrist_yaw_link",
+            "r_body": "right_wrist_yaw_link",
+            "t_weight": 4.0,
+            "r_weight": 0.0
+        },
+        "LeftLeg": {
+            "t_body": "left_hip_roll_link",
+            "r_body": "left_hip_roll_link",
+            "t_weight": 1.5,
+            "r_weight": 0.15
+        },
+        "LeftShin": {
+            "t_body": "left_knee_link",
+            "r_body": "left_knee_link",
+            "t_weight": 1.0,
+            "r_weight": 1.0
+        },
+        "LeftFoot": {
+            "t_body": "left_ankle_roll_link",
+            "r_body": "left_ankle_roll_link",
+            "t_weight": 30.0,
+            "r_weight": 10.0
+        },
+        "RightLeg": {
+            "t_body": "right_hip_roll_link",
+            "r_body": "right_hip_roll_link",
+            "t_weight": 1.5,
+            "r_weight": 0.15
+        },
+        "RightShin": {
+            "t_body": "right_knee_link",
+            "r_body": "right_knee_link",
+            "t_weight": 1.0,
+            "r_weight": 1.0
+        },
+        "RightFoot": {
+            "t_body": "right_ankle_roll_link",
+            "r_body": "right_ankle_roll_link",
+            "t_weight": 30.0,
+            "r_weight": 10.0
+        }
+    }
+}

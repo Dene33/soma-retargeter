@@ -14,3 +14,9 @@ wheels/
 
 # Log files, settings
 imgui.ini
+
+# Third-party assets that must not be redistributed
+# - Asimov 1 description: downloaded locally by app/tools/fetch_asimov_assets.py
+soma_retargeter/assets/robotics/asimov/asimov1/desc/
+# - Retargeted motions derived from the NVIDIA Sample Dataset (assets/motions/LICENSE.txt)
+assets/motions/csv/asimov_1/
