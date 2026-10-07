@@ -61,6 +61,8 @@ Documentation from setup through batch processing:
 
 A `.bvh` file contains a skeleton hierarchy and one pose per animation frame. The retargeter currently expects the source hierarchy and naming used by the SOMA base skeleton. An arbitrary BVH exported from another character or motion capture package may load incorrectly or fail because its skeleton is different.
 
+Motions on a supported other skeleton can be moved onto the SOMA skeleton first; see **[Converting other BVH skeletons to SOMA](documentation/converting-to-soma.md)**. The [CMU Motion Capture Database](http://mocap.cs.cmu.edu/) (MotionBuilder-friendly BVH conversion) is supported.
+
 For the first run, use `assets/motions/bvh/Neutral_walk_forward_002__A057.bvh`. Keeping the input known removes one source of incertainty while you test the installation.
 
 ### Output: robot CSV
