@@ -28,7 +28,7 @@
             ],
             "left_ankle_roll_link": [
                 10.0,
-                2.0
+                0.5
             ],
             "right_hip_roll_link": [
                 1.5,
@@ -40,7 +40,7 @@
             ],
             "right_ankle_roll_link": [
                 10.0,
-                2.0
+                0.5
             ]
         },
         "ik_root": 0,
